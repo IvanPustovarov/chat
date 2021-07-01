@@ -1,24 +1,25 @@
 import React from "react";
 import { useState } from "react";
 
-const InputSpace = () => {
+const InputSpace = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
 
   const handleChangeMessage = (event) => {
     setMessage(event.target.value);
   };
 
-  const handleButtonSubmit = (event) => {
-    setMessage(message);
-    console.log(message);
+  const handleSubmit = (event) => {
     event.preventDefault();
+    setMessage(message);
+    onSubmit(message);
+    setMessage("");
   };
 
   return (
     <div>
-      <form onSubmit={handleButtonSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleChangeMessage} value={message} />
-        <button type="submit" onSubmit={() => handleButtonSubmit}>
+        <button type="submit" onSubmit={() => handleSubmit}>
           OK
         </button>
       </form>

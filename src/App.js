@@ -1,40 +1,35 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 
-import { db } from "./firebase";
+import { getMessages, createMessage } from "./api";
 
-import InputSpace from "./components/InputSpace";
+import InputSpace from "./components/InputSpace/index.js";
+import MessageSpace from "./components/MessageSpace/index.js";
 
 function App() {
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    db.collection("messages")
-      .get()
-      .then((snapshot) => {
-        const messages = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+  const handleSubmit = (message, userName = "winston") => {
+    createMessage(userName, message).then((message) => {
+      setMessages([...messages, message.data()]);
+    });
+  };
 
-        setMessages(messages);
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
+  useEffect(() => {
+    getMessages("messages").then(setMessages);
   }, []);
   return (
-    <div className="App">
+    <MessageSpace className="app">
       <ul>
         {messages.map((message) => (
           <div key={message.id}>
-            <div style={{ fontWeight: "bold" }}>{message.name}</div>
+            <div>{message.name}</div>
             <div>{message.text}</div>
           </div>
         ))}
       </ul>
-      <InputSpace />
-    </div>
+      <InputSpace onSubmit={handleSubmit} />
+    </MessageSpace>
   );
 }
 
