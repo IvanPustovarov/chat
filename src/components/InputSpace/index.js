@@ -5,7 +5,11 @@ const InputSpace = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
 
   const handleChangeMessage = (event) => {
-    setMessage(event.target.value);
+    const text = event.target.value;
+    text.trim();
+    if (text.length > 0) {
+      setMessage(text);
+    }
   };
 
   const handleSubmit = (event) => {

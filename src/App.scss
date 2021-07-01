@@ -5,4 +5,10 @@
   flex-direction: row;
   width: 100%;
   background-color: aquamarine;
+
+  .app__message {
+    font-weight: bold;
+    width: 10rem;
+    height: 2rem
+  }
 }

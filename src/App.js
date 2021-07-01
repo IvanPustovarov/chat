@@ -24,7 +24,7 @@ function App() {
         {messages.map((message) => (
           <div key={message.id}>
             <div>{message.name}</div>
-            <div>{message.text}</div>
+            <div className="app__message">{message.text}</div>
           </div>
         ))}
       </ul>
