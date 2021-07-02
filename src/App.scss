@@ -2,13 +2,18 @@
 
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   background-color: aquamarine;
 
   .app__message {
     font-weight: bold;
     width: 10rem;
-    height: 2rem
+    height: 2rem;
+    color: rgb(255, 255, 255);
+    border-radius: .5rem;
+    padding: .3rem 0 .2rem .3rem;
+    margin: .1rem 0 0 .1rem;
+    background-color: #7953a8;
   }
 }

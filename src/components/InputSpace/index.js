@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+import "./index.scss";
+
 const InputSpace = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
 
@@ -20,11 +22,15 @@ const InputSpace = ({ onSubmit }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form">
+      <form onSubmit={handleSubmit} className="form__input">
         <input type="text" onChange={handleChangeMessage} value={message} />
-        <button type="submit" onSubmit={() => handleSubmit}>
-          OK
+        <button
+          type="submit"
+          onSubmit={() => handleSubmit}
+          className="form__send"
+        >
+          SEND
         </button>
       </form>
     </div>
