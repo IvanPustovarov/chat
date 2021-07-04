@@ -5,12 +5,17 @@ import "./index.scss";
 
 const InputSpace = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleChangeMessage = (event) => {
     const text = event.target.value;
     text.trim();
-    if (text.length > 0) {
-      setMessage(text);
+    setMessage(text);
+    if(text.length === 0) {
+      setIsDisabled(true);
+    }
+    if(text.length) {
+      setIsDisabled(false)
     }
   };
 
@@ -29,12 +34,13 @@ const InputSpace = ({ onSubmit }) => {
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit} className="form__input">
-        <input type="text" onChange={handleChangeMessage} value={message} />
+      <form onSubmit={handleSubmit} className="form__submit">
+        <input type="text" onChange={handleChangeMessage} value={message} className="form__input_text"/>
         <button
           type="submit"
           onSubmit={() => handleSubmit}
           className="form__send"
+          disabled={isDisabled}
         >
           SEND
         </button>

@@ -1,6 +1,10 @@
 .form{
-  .form__input{
+  margin-bottom: 1rem;
+  .form__submit{
     margin-left: 1rem;
+    .form__input_text{
+      width: 20rem;
+    }
   }
   .form__send{
     margin-left: .3rem;
