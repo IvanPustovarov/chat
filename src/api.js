@@ -1,5 +1,11 @@
 import { db } from "./firebase";
 
+/**
+ *
+ * @param {string} userName -- default name of user. "winston"
+ * @param {string} text -- text of message that will add to db collection
+ * @returns -- provide to up-to-date data
+ */
 const createMessage = (userName = "winston", text) => {
   return db
     .collection("messages")
@@ -11,6 +17,11 @@ const createMessage = (userName = "winston", text) => {
       return docRef.get();
     });
 };
+/**
+ *
+ * @param {array} collection  -- get all messages from db
+ * @returns -- array of message
+ */
 
 const getMessages = (collection) => {
   return db

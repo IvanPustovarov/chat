@@ -14,6 +14,12 @@ const InputSpace = ({ onSubmit }) => {
     }
   };
 
+  /**
+   * 
+   * @param {*} event  -- use preventDefault for not reload, when we have submit
+   * 
+   * save message in local state and get into props callback
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     setMessage(message);

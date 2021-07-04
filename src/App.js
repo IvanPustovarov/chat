@@ -9,12 +9,21 @@ import MessageSpace from "./components/MessageSpace/index.js";
 function App() {
   const [messages, setMessages] = useState([]);
 
+/**
+ * 
+ * @param {string} message -- get message from input
+ * @param {string} userName -- default name
+ * 
+ * and when we read message from input -- we push it into callback from api
+ */
   const handleSubmit = (message, userName = "winston") => {
     createMessage(userName, message).then((message) => {
       setMessages([...messages, message.data()]);
     });
   };
-
+  /**
+  * in useEffect we get messages collection from db
+  */
   useEffect(() => {
     getMessages("messages").then(setMessages);
   }, []);
