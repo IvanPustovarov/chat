@@ -10,11 +10,8 @@ const InputSpace = ({ onSubmit }) => {
   const handleChangeMessage = (event) => {
     const text = event.target.value;
     setIsDisabled(text.trim().length === 0);
-    console.log(isDisabled);
     setMessage(text);
   };
-
-
   /**
    * 
    * @param {*} event  -- use preventDefault for not reload, when we have submit
