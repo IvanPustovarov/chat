@@ -1,23 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./index.scss";
 
 const InputSpace = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleChangeMessage = (event) => {
     const text = event.target.value;
-    text.trim();
+    setIsDisabled(text.trim().length === 0);
+    console.log(isDisabled);
     setMessage(text);
-    if(text.length === 0) {
-      setIsDisabled(true);
-    }
-    if(text.length) {
-      setIsDisabled(false)
-    }
   };
+
 
   /**
    * 
@@ -27,7 +23,7 @@ const InputSpace = ({ onSubmit }) => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    setMessage(message);
+    setMessage(message.trim());
     onSubmit(message);
     setMessage("");
   };
