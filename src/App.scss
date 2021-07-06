@@ -5,7 +5,11 @@
   flex-direction: column;
   width: 100%;
   background-color: aquamarine;
-
+  ul{
+    overflow-y: scroll;
+    height: 50vh;
+    width: 28rem;
+  }
   .app__message {
     font-weight: bold;
     width: 20rem;
